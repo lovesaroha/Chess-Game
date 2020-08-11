@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Chess Game</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+</head>
+
+<body id="body_ID">
+    <div class="container mb-4 mt-4">
+        <center>
+            <!-- Title -->
+            <h1 style="font-size: 3.5rem;">
+                <font class="text-primary">C</font>hess <small
+                    class="text-muted"> ( Game )</small>
+            </h1>
+            <h4>Chess is a two-player strategy board game played on a checkered board with 64 squares arranged in an 8×8 square grid.</h4>
+        </center>
+        <div class="row mx-auto mb-3" style="max-width: 700px;">
+            <div class="col-md-6">
+                <div class="card shadow-sm" id="playerOneCard_ID" style="border-bottom: 5px solid var(--primary);">
+                    <div class="card-body">
+                        <div class="media">
+                            <img src="assets/images/pawn-white.png" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h4 class="mb-0">Player One</h4>
+                               <h4 class="text-muted">Won  <font class="text-primary" id="playerOneWon_ID">0</font></h4>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm" id="playerTwoCard_ID" style="border-bottom: 5px solid #fff;">
+                    <div class="card-body">
+                        <div class="media">
+                            <img src="assets/images/pawn-black.png" class="mr-3" alt="...">
+                            <div class="media-body">
+                              <h4 class="mb-0">Player Two</h4>
+                               <h4 class="text-muted">Won  <font class="text-primary" id="playerTwoWon_ID">0</font></h4>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <center>
+            <!-- Canvas with map image  -->
+            <canvas style="background: url('assets/images/back.png');" class="shadow mt-3 mb-0" height="800" width="800"
+                id="myCanvas"></canvas>
+        </center>
+        <div class="mt-2 card shadow-sm">
+            <div class="card-body">
+                <h4>Love Saroha <br>
+                    <font class="text-primary"><i class="fad fa-envelope"></i> lovesaroha1994@gmail.com</font>
+                </h4>
+                <h4>Source Code <br><a href="https://github.com/lovesaroha/Chess-Game" target="_blank"><i
+                            class="fad fa-code-merge text-primary"></i>
+                        https://github.com/lovesaroha/Chess-Game</a></h4>
+                <h4>Website <br><a href="https://lovesaroha.com"><i class="fad fa-link text-primary"></i>
+                        www.lovesaroha.com</a></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div id="modalDialog_ID" class="modal-dialog modal-dialog-scrollable shadow" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modalHeader_ID">
+                    <div id="modalLoading_ID"></div>
+                    <h4 class="modal-title" id="modalTitle_ID">Modal title</h4>
+                    <button type="button" class="close" onclick="javascript: closeModal();">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody_ID">
+                    <div id="modalMessage_ID"></div>
+                    <div class="modal-body-content" id="modalContent_ID"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include script.js file -->
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+
+</html>

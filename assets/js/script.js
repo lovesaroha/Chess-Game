@@ -154,7 +154,7 @@ function getPossibleMoves(position) {
                             }
                         }
                     }
-                    if (leftLimit > 0) {
+                    if (leftLimit >= 0) {
                         if (checkMove(position[0] + change, leftLimit, piece) == true) {
                             if (board[position[0] + change][leftLimit] != 0 || (board[position[0] + change][position[1]] * piece) > 0) {
                                 moves.push([position[0] + change, leftLimit]);
@@ -243,7 +243,7 @@ function checkMove(row, column, piece) {
 
 // This function update player cards.
 function updatePlayerCard() {
-    if(currentMove > 0) {
+    if (currentMove > 0) {
         document.getElementById("playerOneCard_ID").style = "border-bottom: 5px solid var(--primary);";
         document.getElementById("playerTwoCard_ID").style = "border-bottom: 5px solid #fff;";
     } else {

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="chess game">
+    <title>Chess Game</title>
+    <!-- Include css files. -->
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/fa.min.css">
+</head>
+
+<body id="body_ID">
+    <div class="container w-full mx-auto max-w-8/12 md:px-4 pb-8">
+        <!-- Header. -->
+        <center>
+            <h1 class="font-bold display-1 underline">
+                Chess
+            </h1>
+            <h4 class="text-subtitle mb-6">Chess is a two-player strategy board game played on a checkered board with 64
+                squares arranged in an 8×8 square grid.</h4>
+        </center>
+        <!-- Score board. -->
+        <div class="md:flex flex-wrap mb-3 justify-center gap-4">
+            <div class="p-2 card mb-1 px-4 max-w-sm shadow-md border-3 border-transparent" id="playerOneCard_id">
+                <h3 class="font-bold text-subtitle mb-0"><i class="fal fa-chess-king text-primary"></i> White &nbsp; <font id="playerOneWon_id">0</font>
+                </h3>
+            </div>
+            <div class="p-2 card mb-1 px-4 max-w-sm shadow-md border-3 border-transparent" id="playerTwoCard_id">
+                <h3 class="font-bold text-subtitle mb-0"><i class="fad fa-chess-king text-primary"></i> Black &nbsp; <font id="playerTwoWon_id">0</font>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <center>
+        <!-- Canvas with map image.  -->
+        <canvas style="background: url('assets/background.png');" class="shadow-md mt-3 mb-2 hide-on-md" height="640"
+            width="640" id="myCanvas"></canvas>
+    </center>
+    <!-- Footer. -->
+    <div class="mb-2 card text-center p-2 mx-auto max-w-xl">
+        <h4 class="text-subtitle"><a href="https://github.com/lovesaroha/Chess-Game"
+                target="_blank">LoveSaroha/Chess-Game</a></h4>
+        <h3 class="text-subtitle font-bold mb-0 hover:underline cursor-pointer"
+            onclick="javascript: window.location = 'https://lovesaroha.com';">Love Saroha</h3>
+        <h4 class="text-gray">lovesaroha1994@gmail.com</h4>
+    </div>
+
+    <!-- Modal element. -->
+    <div class="fixed z-50 inset-0 overflow-y-auto" onclick="javascript: closeModalBackground(event);"
+        style="display: none;" id="modal_id" aria-labelledby="modal-title" role="dialog" aria-modal="true"></div>
+    <!-- Include script.js file -->
+    <script type="text/javascript" src="./assets/script.js"></script>
+</body>
+
+</html>

@@ -7,7 +7,19 @@
 */
 
 // Themes.
-const themes = [{ normal: "#5468e7", light: "#6577e9", veryLight: "#eef0fd" }, { normal: "#e94c2b", light: "#eb5e40", veryLight: "#fdedea" }];
+const themes = [
+    {
+        normal: "#5468e7",
+        dark: "#4c5ed0",
+        light: "#98a4f1",
+        veryLight: "#eef0fd"
+    }, {
+        normal: "#e94c2b",
+        dark: "#d24427",
+        veryLight: "#fdedea",
+        light: "#f29480"
+    }
+];
 
 // Choose random color theme.
 let colorTheme = themes[Math.floor(Math.random() * themes.length)];
@@ -81,8 +93,8 @@ function showBoard(showMoves) {
         for (let col = 0; col < 8; col++) {
             if (board[row][col] != 0) {
                 if (board[row][col] < 0) {
-                    ctx.font = '1000 70px "Font Awesome 5 Pro"';
-                    ctx.fillStyle = colorTheme.normal;
+                    ctx.font = '300 70px "Font Awesome 5 Pro"';
+                    ctx.fillStyle = colorTheme.dark;
                     ctx.textAlign = 'center';
                     ctx.fillText(icons[board[row][col] * -1], (col * 80) + 40, (row * 80) + 65);
                 } else {

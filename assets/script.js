@@ -385,9 +385,7 @@ canvas.addEventListener("mousedown", function (e) {
 
 // Make move function makes a move.
 function makeMove(position) {
-    if (possibleMoves.length == 0 || selectedPosition.length == 0) {
-        return;
-    }
+    if (possibleMoves.length == 0 || selectedPosition.length == 0) { return; }
     let moveFound = false;
     // Check moves.
     for (let i = 0; i < possibleMoves.length; i++) {
@@ -395,9 +393,7 @@ function makeMove(position) {
             moveFound = true;
         }
     }
-    if (moveFound == false) {
-        return;
-    }
+    if (!moveFound) { return; }
     if (board[position[0]][position[1]] == 28) {
         resetGame();
         showModal(`<div class="bg-modal fade-in modal-content mx-auto mt-10 overflow-hidden p-4 shadow-xl sm:max-w-lg sm:w-full"><center><i class="fad fa-trophy fa-5x mb-1 text-primary"></i> <h1 class="mb-0 font-bold">Game Over</h1>
@@ -415,17 +411,18 @@ function makeMove(position) {
         return;
     }
     if (board[position[0]][position[1]] < 0) {
-        playerOne.score += board[position[0]][position[1]];
+        playerOne.score += board[position[0]][position[1]] * -1;
     }
     if (board[position[0]][position[1]] > 0) {
         playerTwo.score += board[position[0]][position[1]];
     }
-    if (playerTwo.score > 33 && playerOne.score > 33) {
-        // Draw.
-        resetGame();
-        return;
+    // Check pawn.
+    if (Math.abs(board[selectedPosition[0]][selectedPosition[1]]) == 1 && (position[0] == 0 || position[0] == 7)) {
+        // Add queen.
+        board[position[0]][position[1]] = 9 * currentMove;
+    } else {
+        board[position[0]][position[1]] = board[selectedPosition[0]][selectedPosition[1]];
     }
-    board[position[0]][position[1]] = board[selectedPosition[0]][selectedPosition[1]];
     board[selectedPosition[0]][selectedPosition[1]] = 0;
     currentMove *= -1;
     updatePlayerCard();

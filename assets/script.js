@@ -77,17 +77,13 @@ function resetGame() {
 resetGame();
 
 // Show board function shows board values.
-function showBoard(showMoves) {
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (showMoves) {
-        for (let i = 0; i < possibleMoves.length; i++) {
-            ctx.beginPath();
-            ctx.arc((possibleMoves[i][1] * 80) + 40, (possibleMoves[i][0] * 80) + 40, 5, 0, 2 * Math.PI);
-            ctx.lineWidth = 10;
-            ctx.strokeStyle = colorTheme.normal;
-            ctx.stroke();
-        }
+function showBoard() {
+    for (let i = 0; i < possibleMoves.length; i++) {
+        ctx.beginPath();
+        ctx.arc((possibleMoves[i][1] * 80) + 40, (possibleMoves[i][0] * 80) + 40, 5, 0, 2 * Math.PI);
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = colorTheme.normal;
+        ctx.stroke();
     }
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
@@ -374,7 +370,6 @@ canvas.addEventListener("mousedown", function (e) {
     if (currentMove * piece > 0) {
         // Select piece.
         possibleMoves = getPossibleMoves(position);
-        showPossibleMoves();
         selectedPosition = position;
         return;
     }
@@ -382,20 +377,11 @@ canvas.addEventListener("mousedown", function (e) {
         if ((currentMove > 0 && board[selectedPosition[0]][selectedPosition[1]] > 0 && piece <= 0) || (currentMove < 0 && board[selectedPosition[0]][selectedPosition[1]] < 0 && piece >= 0)) {
             // Reset selected piece make a move.
             makeMove(position);
-            showBoard();
             selectedPosition = [];
             possibleMoves = [];
         }
     }
 });
-
-// This function shows possible moves.
-function showPossibleMoves() {
-    if (possibleMoves.length == 0) {
-        return;
-    }
-    showBoard(true);
-}
 
 // Make move function makes a move.
 function makeMove(position) {
@@ -414,7 +400,6 @@ function makeMove(position) {
     }
     if (board[position[0]][position[1]] == 28) {
         resetGame();
-        showBoard();
         showModal(`<div class="bg-modal fade-in modal-content mx-auto mt-10 overflow-hidden p-4 shadow-xl sm:max-w-lg sm:w-full"><center><i class="fad fa-trophy fa-5x mb-1 text-primary"></i> <h1 class="mb-0 font-bold">Game Over</h1>
             <h4 class="text-subtitle">Black won this game</h4></center></div>`);
         playerTwo.won++;
@@ -423,7 +408,6 @@ function makeMove(position) {
     }
     if (board[position[0]][position[1]] == -28) {
         resetGame();
-        showBoard();
         showModal(`<div class="bg-modal fade-in modal-content mx-auto mt-10 overflow-hidden p-4 shadow-xl sm:max-w-lg sm:w-full"><center><i class="fad fa-trophy fa-5x mb-1 text-primary"></i> <h1 class="mb-0 font-bold">Game Over</h1>
             <h4 class="text-subtitle">White won this game</h4></center></div>`);
         playerOne.won++;
@@ -439,7 +423,6 @@ function makeMove(position) {
     if (playerTwo.score > 33 && playerOne.score > 33) {
         // Draw.
         resetGame();
-        showBoard();
         return;
     }
     board[position[0]][position[1]] = board[selectedPosition[0]][selectedPosition[1]];
@@ -447,6 +430,16 @@ function makeMove(position) {
     currentMove *= -1;
     updatePlayerCard();
 }
+
+// Draw.
+function draw() {
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    showBoard();
+    window.requestAnimationFrame(draw);
+}
+
+draw();
 
 // All functions related to modal.
 // This is a showModal function which shows modal based on given options as an argument.  

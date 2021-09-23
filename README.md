@@ -3,4 +3,4 @@
 
 ![game](https://raw.githubusercontent.com/lovesaroha/gimages/main/7.png)
 
-[lovesaroha/p/Chess-Game](https://lovesaroha.com/p/Chess-Game)
+[lovesaroha/Chess-Game](https://games.lovesaroha.com/Chess-Game)
